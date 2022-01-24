@@ -1,10 +1,10 @@
-import 'dart:ui';
-import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+import 'dart:ui';
 
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // Type definitions for helpers
 typedef void NotificationCallback(Map<String, dynamic> data);
@@ -116,6 +116,10 @@ class Pushy {
       // Empty queue
       notificationClickQueue = [];
     }
+  }
+
+  static void setForegroundNotification() {
+    _channel.invokeMethod('setForegroundNotification');
   }
 
   static Future<String?> subscribe(String topic) async {
